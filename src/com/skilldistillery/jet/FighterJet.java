@@ -12,10 +12,17 @@ private String type;
 	}
 
 	public void fly() {
-		System.out.println(getModel()+ " " + "is prepared to fly");
-		scrambleJets();
-		loadAmmunition();
-		fight();
+		double timeInAir = getSpeed() / getRange();
+		System.out.println(toString() + " " + timeInAir);
+		}
+//		System.out.println(getModel()+ " " + "is prepared to fly");
+//		scrambleJets();
+//		loadAmmunition();
+//		fight();
+//}
+	
+	public void getSpeedInMach() {
+		double speedInMach = this.getSpeed() / 761;
 	}
 	
 	@Override

@@ -2,27 +2,33 @@ package com.skilldistillery.jet;
 
 public class CargoPlane extends Jet implements CargoPlaneActions{
 	private String type;
-	private double cargoCapacity;
+	
 
 
 	public CargoPlane() {}
 
-	public CargoPlane(String model, double speed, int range, long price, String type, double cargoCapacity) {
+	public CargoPlane(String model, double speed, int range, long price, String type) {
 		super(model, speed, range, price);
 		this.type = type;
-		this.cargoCapacity = cargoCapacity;
+	
 	}
 
 	public void loadCargo() {
-		System.out.println("wake up guys we gotta load the plane! ");
-	}
-	
-	public void fly() {
 		System.out.println(getModel()+ " " + "is prepared to fly");
+		System.out.println("wake up guys we gotta load the plane! ");
 		wrapCargo();
 		loadingTruck();
 		tieDownCargo();
-		
+		System.out.println("");
+	}
+	
+	public void fly() {
+		double timeInAir = getSpeed() / getRange();
+	System.out.println(toString() + " " + timeInAir);
+	}
+	
+	public void getSpeedInMach() {
+		double speedInMach = this.getSpeed() / 761;
 	}
 
 	@Override
@@ -43,13 +49,7 @@ public class CargoPlane extends Jet implements CargoPlaneActions{
 
 	}
 
-	public double getCargoCapacity() {
-		return cargoCapacity;
-	}
 
-	public void setCargoCapacity(double cargoCapacity) {
-		this.cargoCapacity = cargoCapacity;
-	}
 
 	public String getType() {
 		return type;
@@ -61,9 +61,11 @@ public class CargoPlane extends Jet implements CargoPlaneActions{
 
 	@Override
 	public String toString() {
-		return "CargoPlane [type=" + type + ", cargoCapacity=" + cargoCapacity + ", getCargoCapacity()="
-				+ getCargoCapacity() + ", getType()=" + getType() + "]";
+		return "CargoPlane [getType()=" + getType() + ", getModel()=" + getModel() + ", getSpeed()=" + getSpeed()
+				+ ", getRange()=" + getRange() + ", getPrice()=" + getPrice() + "]";
 	}
+
+
 
 	
 }

@@ -18,9 +18,13 @@ abstract class Jet {
 		this.price = price;
 	}
 
-	public void fly() {
-	}
+	public void fly() {}
 
+	public void getSpeedInMach() {
+		double speedInMach = this.speed / 761;
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "Jet [model=" + model + ", speed=" + speed + ", range=" + range + ", price=" + price + "]";
