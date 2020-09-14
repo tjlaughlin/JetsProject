@@ -8,12 +8,14 @@ import java.util.List;
 import java.util.Scanner;
 
 public class AirField {
+//private AirField af;
 
-//	TODO: create an instance in the application to run the reader. make sure to pass in jet.txt
 
-	public static void main(String[] args) {
-//	public void listOfJets() {
-		List<Jet> jets = new ArrayList<>();
+//	public static void main(String[] args) {
+	public List<Jet> jets = new ArrayList<>();
+	
+
+	public void listOfJets(List<Jet> jets) {
 		try (BufferedReader bufIn = new BufferedReader(new FileReader("jet.txt"))) {
 			String line;
 			while ((line = bufIn.readLine()) != null) {
@@ -34,7 +36,6 @@ public class AirField {
 					jets.add(newJet);
 				}
 			}
-
 		} catch (IOException e) {
 			System.err.println(e);
 		}
@@ -42,33 +43,33 @@ public class AirField {
 		for (Jet jet : jets) {
 			System.out.println(jet);
 		}
+		
 	}
-
+	
 	public AirField() {
 	}
 
+
+
+
 	public void listFleet(List<Jet> jets) {
-		for (Jet jet : jets) {
-			System.out.println(jet.toString());
+		for (int i = 0 ; i < jets.size() ; i++) {
+			System.out.println("hello");
 		}
 	}
 
 	public void flyAllJets(List<Jet> jets) {
-		for (Jet jet : jets) {
-			String fj = ((Jet) jet).getModel();
-
+		for (int i = 0 ; i < jets.size() ; i ++) {
+			jets.get(i).getSpeedInMach();
 			System.out.println();
 		}
 	}
 
 	public void fastestJet(List<Jet> jets) {
 		double max = 0;
-		String fastestJet = "";
+		String fastestJet = null;
 		for (int i = 0; i < jets.size(); i++) {
-
-			if (jets == null) {
-				break;
-			} else if (max < jets.get(i).getSpeed()) {
+			 if (max < jets.get(i).getSpeed()) {
 				max = jets.get(i).getSpeed();
 				fastestJet = jets.toString();
 			}
@@ -108,7 +109,7 @@ public class AirField {
 		}
 	}
 
-	public void addJet(List<Jet> jets) {
+	public void addJet() {
 		Scanner kb = new Scanner(System.in);
 		boolean keepGoing = true;
 		System.out.println("Hello, you are now adding a jet");
@@ -164,7 +165,41 @@ public class AirField {
 	}
 
 	public void removeJet(List<Jet> jets) {
+		Scanner input = new Scanner(System.in);
 		System.out.println("Please select the jet you would like to remove: ");
+		System.out.println("1: F35 ");
+		System.out.println("2: fedex ");
+		System.out.println("3: 737 ");
+		System.out.println("4: raptor ");
+		System.out.println("5: airbus ");
+		int userChoice = input.nextInt();
+		
+		switch(userChoice) {
+		
+		case 1: 
+			jets.remove(0);
+			break;
+		case 2: 
+			jets.remove(1);
+			break;
+		case 3: 
+			jets.remove(2);
+			break;
+		case 4: 
+			jets.remove(3);
+		case 5: 
+			jets.remove(4);
+			break;
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 	}
 

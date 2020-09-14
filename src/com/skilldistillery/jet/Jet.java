@@ -25,9 +25,12 @@ abstract class Jet {
 	}
 	
 	
+	
+
 	@Override
 	public String toString() {
-		return "Jet [model=" + model + ", speed=" + speed + ", range=" + range + ", price=" + price + "]";
+		return "Jet [getModel()=" + getModel() + ", getSpeed()=" + getSpeed() + ", getRange()=" + getRange()
+				+ ", getPrice()=" + getPrice() + "]";
 	}
 
 	public String getModel() {
