@@ -15,7 +15,7 @@ public class AirField {
 	public List<Jet> jets = new ArrayList<>();
 	
 
-	public void listOfJets(List<Jet> jets) {
+	public List<Jet> jetCreator() {
 		try (BufferedReader bufIn = new BufferedReader(new FileReader("jet.txt"))) {
 			String line;
 			while ((line = bufIn.readLine()) != null) {
@@ -43,6 +43,7 @@ public class AirField {
 		for (Jet jet : jets) {
 			System.out.println(jet);
 		}
+		return jets;
 		
 	}
 	
@@ -54,7 +55,10 @@ public class AirField {
 
 	public void listFleet(List<Jet> jets) {
 		for (int i = 0 ; i < jets.size() ; i++) {
+//			this sysout is just me trying to figure out if i can print off anything from this for loop
 			System.out.println("hello");
+//			jets.toString();
+//			System.out.println();
 		}
 	}
 
