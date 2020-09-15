@@ -143,7 +143,10 @@ public class AirField {
 			String type = "fighter";
 			Jet newFJ = new FighterJet(model, speed, range, price, type);
 			jets.add(newFJ);
-			System.out.println(newFJ);
+			System.out.println("Your new jet hass been added to the air field");
+			for (Jet jet : jets) {
+				System.out.println(jet);
+			}
 			break;
 		case 2: 
 			System.out.println("Please enter the model of your new jet: ");
