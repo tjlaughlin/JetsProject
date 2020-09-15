@@ -9,10 +9,14 @@ import java.util.Scanner;
 
 public class AirField {
 //private AirField af;
+	private List<Jet> jets;
 
+	public AirField() {
+		jets = new ArrayList<>();
+		jetCreator();
+	}
 
 //	public static void main(String[] args) {
-	public List<Jet> jets = new ArrayList<>();
 	
 
 	public List<Jet> jetCreator() {
@@ -36,40 +40,39 @@ public class AirField {
 					jets.add(newJet);
 				}
 			}
+		bufIn.close();
 		} catch (IOException e) {
 			System.err.println(e);
 		}
 
-		for (Jet jet : jets) {
-			System.out.println(jet);
-		}
+		
 		return jets;
 		
 	}
 	
-	public AirField() {
-	}
 
 
 
 
-	public void listFleet(List<Jet> jets) {
+	public void listFleet() {
 		for (int i = 0 ; i < jets.size() ; i++) {
-//			this sysout is just me trying to figure out if i can print off anything from this for loop
-			System.out.println("hello");
-//			jets.toString();
-//			System.out.println();
+			System.out.println(jets.get(i));
 		}
-	}
-
-	public void flyAllJets(List<Jet> jets) {
-		for (int i = 0 ; i < jets.size() ; i ++) {
-			jets.get(i).getSpeedInMach();
+//			this sysout is just me trying to figure out if i can print off anything from this for loop
+//			System.out.println("hello");
 			System.out.println();
 		}
+//	}
+
+	public void flyAllJets() {
+		for (int i = 0 ; i < jets.size() ; i ++) {
+			jets.get(i).fly();
+		}
 	}
 
-	public void fastestJet(List<Jet> jets) {
+	
+//	Make SURE ALL THE CLASSES LOOK LIKE THEY DO FOR THE FLY METHOD IN JET
+	public void fastestJet() {
 		double max = 0;
 		String fastestJet = null;
 		for (int i = 0; i < jets.size(); i++) {
@@ -82,7 +85,7 @@ public class AirField {
 
 	}
 
-	public void longestRange(List<Jet> jets) {
+	public void longestRange() {
 		double max = 0;
 		String longestRange = "";
 		for (int i = 0; i < jets.size(); i++) {
@@ -97,25 +100,24 @@ public class AirField {
 		System.out.println(longestRange);
 	}
 
-	public void loadAllCargoJets(List<Jet> jets) {
+	public void loadAllCargoJets() {
 		for (int i = 0; i < jets.size(); i++) {
-			if (jets instanceof CargoPlane) {
-				((CargoPlane) jets).loadCargo();
+			if (jets.get(i) instanceof CargoPlane) {
+				((CargoPlane) jets.get(i)).loadCargo();
 			}
 		}
 	}
 
-	public void dogFight(List<Jet> jets) {
+	public void dogFight() {
 		for (int i = 0; i < jets.size(); i++) {
-			if (jets instanceof FighterJet) {
-				((FighterJet) jets).fight();
+			if (jets.get(i) instanceof FighterJet) {
+				((FighterJet) jets.get(i)).fight();
 			}
 		}
 	}
 
 	public void addJet() {
 		Scanner kb = new Scanner(System.in);
-		boolean keepGoing = true;
 		System.out.println("Hello, you are now adding a jet");
 		System.out.println("Please enter the type of jet you would like to add");
 		System.out.println("***************************************************");
@@ -124,7 +126,9 @@ public class AirField {
 		System.out.println("3: Passenger Jet");
 		System.out.println("****************************************************");
 		int userChoice = kb.nextInt();
+	
 		
+	
 		switch(userChoice) {
 		
 		case 1:
@@ -135,10 +139,12 @@ public class AirField {
 			System.out.println("Please enter the range of your jet: ");
 			int range = kb.nextInt();
 			System.out.println("Please enter the price of your new jet: ");
-			long price = kb.nextLong();
+			long price = kb.nextInt();
+			System.out.println("and the type of jet is fighter");
 			String type = "fighter";
 			Jet newFJ = new FighterJet(model, speed, range, price, type);
 			jets.add(newFJ);
+			System.out.println(jets);
 			break;
 		case 2: 
 			System.out.println("Please enter the model of your new jet: ");
@@ -149,7 +155,7 @@ public class AirField {
 			int rangeC = kb.nextInt();
 			System.out.println("Please enter the price of your new jet: ");
 			long priceC = kb.nextLong();
-			String typeC = "fighter";
+			String typeC = "cargo";
 			Jet newCargo = new FighterJet(modelC, speedC, rangeC, priceC, typeC);
 			jets.add(newCargo);
 			break;
@@ -162,13 +168,17 @@ public class AirField {
 			int rangeP = kb.nextInt();
 			System.out.println("Please enter the price of your new jet: ");
 			long priceP = kb.nextLong();
-			String typeP= "fighter";
+			String typeP= "passenger";
 			Jet newPassenger = new FighterJet(modelP, speedP, rangeP, priceP, typeP);
 			jets.add(newPassenger);
+			break;
+			default: 
+				System.out.println("invalid option. Please enter either 1, 2 or 3");
 		}
+		kb.close();
 	}
 
-	public void removeJet(List<Jet> jets) {
+	public void removeJet() {
 		Scanner input = new Scanner(System.in);
 		System.out.println("Please select the jet you would like to remove: ");
 		System.out.println("1: F35 ");

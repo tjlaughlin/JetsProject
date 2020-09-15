@@ -27,9 +27,7 @@ public class CargoPlane extends Jet implements CargoPlaneActions{
 	System.out.println(toString() + " " + timeInAir);
 	}
 	
-	public void getSpeedInMach() {
-		double speedInMach = this.getSpeed() / 761;
-	}
+	
 
 	@Override
 	public void wrapCargo() {

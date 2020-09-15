@@ -18,14 +18,11 @@ abstract class Jet {
 		this.price = price;
 	}
 
-	public void fly() {}
+	public void fly() {
+		double timeInAir = range / speed;
+		System.out.printf(this.getModel(), this.getSpeed(), timeInAir, this.getRange());
 
-	public void getSpeedInMach() {
-		double speedInMach = this.speed / 761;
 	}
-	
-	
-	
 
 	@Override
 	public String toString() {
@@ -65,7 +62,4 @@ abstract class Jet {
 		this.price = price;
 	}
 
-	
-	
-	
 }

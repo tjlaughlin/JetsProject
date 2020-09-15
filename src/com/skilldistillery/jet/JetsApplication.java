@@ -1,13 +1,13 @@
 package com.skilldistillery.jet;
 
 
-import java.util.List;
 import java.util.Scanner;
 
 public class JetsApplication {
-	private static AirField af;
-	List<Jet> jets;
-public static void main(String[] args) {
+	private AirField af;
+//	List<Jet> jets;
+	Scanner userInput = new Scanner(System.in);
+public static void main(String[] args)  {
 		JetsApplication app = new JetsApplication();
 		app.run();
 
@@ -16,8 +16,8 @@ public static void main(String[] args) {
 private void run() {
 	af = new AirField();
 	boolean keepGoing = true;
+
 	while(keepGoing) {
-		Scanner userInput = new Scanner(System.in);
 		System.out.println("Hello and welcome to the skill distillery airfield!");
 		System.out.println("Here is the menu for the interactive airfield, please select one of the following options:");
 		System.out.println("1: List fleet");
@@ -33,37 +33,39 @@ private void run() {
 		int menuChoice = userInput.nextInt();
 		
 		
+		
+		
 		switch (menuChoice) {
 		
 		case 1:
-			af.listFleet(jets); 
+			af.listFleet(); 
 			break;
 		case 2: 
-			af.flyAllJets(jets);
+			af.flyAllJets();
 			break;
 		case 3: 
-			af.fastestJet(jets);
+			af.fastestJet();
 			break;
 		case 4: 
-			af.longestRange(jets);
+			af.longestRange();
 			break;
 		case 5:
-			af.loadAllCargoJets(jets);
+			af.loadAllCargoJets();
 			break;
 		case 6: 
-			af.dogFight(jets);
+			af.dogFight();
 			break;
 		case 7:
-			af.dogFight(jets);
+			af.addJet();
 			break;
 		case 8: 
-			af.addJet();
+			af.removeJet();
+			break;
 		case 9:
 			System.out.println("thanks for coming, goodbye!");
 			keepGoing = false;
 			break;
 		}
-		
 		
 		
 		
