@@ -1,19 +1,21 @@
 package com.skilldistillery.jet;
 
 
+import java.util.List;
 import java.util.Scanner;
 
 public class JetsApplication {
 	private AirField af;
-//	List<Jet> jets;
-	Scanner userInput = new Scanner(System.in);
+	List<Jet> jets;
 public static void main(String[] args)  {
 		JetsApplication app = new JetsApplication();
+		
 		app.run();
 
 		
 	}
 private void run() {
+	Scanner userInput = new Scanner(System.in);
 	af = new AirField();
 	boolean keepGoing = true;
 
@@ -57,9 +59,11 @@ private void run() {
 			break;
 		case 7:
 			af.addJet();
+			keepGoing = false;
 			break;
 		case 8: 
 			af.removeJet();
+			
 			break;
 		case 9:
 			System.out.println("thanks for coming, goodbye!");
@@ -77,6 +81,6 @@ private void run() {
 		
 	}
 	
-	
+	userInput.close();
 }
 }

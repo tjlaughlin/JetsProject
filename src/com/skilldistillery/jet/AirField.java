@@ -140,11 +140,10 @@ public class AirField {
 			int range = kb.nextInt();
 			System.out.println("Please enter the price of your new jet: ");
 			long price = kb.nextInt();
-			System.out.println("and the type of jet is fighter");
 			String type = "fighter";
 			Jet newFJ = new FighterJet(model, speed, range, price, type);
 			jets.add(newFJ);
-			System.out.println(jets);
+			System.out.println(newFJ);
 			break;
 		case 2: 
 			System.out.println("Please enter the model of your new jet: ");
